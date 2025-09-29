@@ -16,7 +16,9 @@ async function fetchCompanies(companyName) {
 
   data.forEach(company => {
     const article = document.createElement("article");
-    article.innerHTML = `<h3>${company.name}</h3>
+    const logoUrl = company.logo || `https://logo.clearbit.com/${company.domain}`;
+    article.innerHTML = `<img src="${logoUrl}" alt="${company.name} Logo" class="company-logo">
+    <h3>${company.name}</h3>
       <p>Website: <a href="https://${company.domain}" target="_blank">${company.domain}</a></p>`;
     resultsDiv.appendChild(article);
   });
